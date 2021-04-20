@@ -1,0 +1,6 @@
+node_modules
+.devcontainer
+README.md
+.gitignore
+test.sh
+.eslintrc.js
