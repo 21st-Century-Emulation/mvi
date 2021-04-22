@@ -7,10 +7,8 @@ const { WRITE_MEMORY_API } = process.env;
 
 app.use(json());
 
-app.post('/hello', (req, res) => {
-  console.log(req.query);
-  console.log(req.body);
-  res.sendStatus(200);
+app.get('/status', (req, res) => {
+  res.send("Healthy");
 });
 
 app.post('/api/v1/execute', (req, res) => {
