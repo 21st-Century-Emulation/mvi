@@ -18,7 +18,7 @@ app.post('/api/v1/execute', (req, res) => {
     return;
   }
 
-  if (req.query.operand === undefined) {
+  if (req.query.operand1 === undefined) {
     console.log('MVI operation requires operand');
     res.sendStatus(400);
     return;
