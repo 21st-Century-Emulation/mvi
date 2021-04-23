@@ -8,7 +8,7 @@ sleep 5
 RESULT=$(curl -s --header "Content-Type: application/json" \
   --request POST \
   --data '{"opcode":6,"state":{"a":181,"b":0,"c":0,"d":0,"e":0,"h":0,"l":0,"flags":{"sign":false,"zero":false,"auxCarry":false,"parity":false,"carry":true},"programCounter":0,"stackPointer":0,"cycles":0}}' \
-  http://localhost:8080/api/v1/execute\?operand=10)
+  http://localhost:8080/api/v1/execute\?operand1=10)
 EXPECTED='{"opcode":6,"state":{"a":181,"b":10,"c":0,"d":0,"e":0,"h":0,"l":0,"flags":{"sign":false,"zero":false,"auxCarry":false,"parity":false,"carry":true},"programCounter":0,"stackPointer":0,"cycles":7}}'
 
 docker kill mvi

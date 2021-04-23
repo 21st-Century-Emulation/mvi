@@ -38,25 +38,25 @@ app.post('/api/v1/execute', (req, res) => {
   } else {
     switch (req.body.opcode) {
       case 0x06: // MVI B, d8
-        req.body.state.b = parseInt(req.query.operand, 10);
+        req.body.state.b = parseInt(req.query.operand1, 10);
         break;
       case 0x0E: // MVI C, d8
-        req.body.state.c = parseInt(req.query.operand, 10);
+        req.body.state.c = parseInt(req.query.operand1, 10);
         break;
       case 0x16: // MVI D, d8
-        req.body.state.d = parseInt(req.query.operand, 10);
+        req.body.state.d = parseInt(req.query.operand1, 10);
         break;
       case 0x1E: // MVI E, d8
-        req.body.state.e = parseInt(req.query.operand, 10);
+        req.body.state.e = parseInt(req.query.operand1, 10);
         break;
       case 0x26: // MVI H, d8
-        req.body.state.h = parseInt(req.query.operand, 10);
+        req.body.state.h = parseInt(req.query.operand1, 10);
         break;
       case 0x2E: // MVI L, d8
-        req.body.state.l = parseInt(req.query.operand, 10);
+        req.body.state.l = parseInt(req.query.operand1, 10);
         break;
       case 0x3E: // MVI A, d8
-        req.body.state.a = parseInt(req.query.operand, 10);
+        req.body.state.a = parseInt(req.query.operand1, 10);
         break;
       default:
         console.log(`Invalid opcode sent to MVI instruction ${req.body.opcode}`);
