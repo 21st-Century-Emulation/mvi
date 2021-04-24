@@ -29,6 +29,7 @@ app.post('/api/v1/execute', (req, res) => {
       params: {
         // eslint-disable-next-line no-bitwise
         address: (req.body.state.h << 8) | req.body.state.l,
+        id: req.body.id,
         value: req.query.operand,
       },
     }).then(() => {
@@ -68,5 +69,5 @@ app.post('/api/v1/execute', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`MVI listening at http://localhost:${port}`);
+  console.log(`MVI listening at http://0.0.0.0:${port}`);
 });
