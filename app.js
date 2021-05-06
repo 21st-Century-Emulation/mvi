@@ -30,7 +30,7 @@ app.post('/api/v1/execute', (req, res) => {
         // eslint-disable-next-line no-bitwise
         address: (req.body.state.h << 8) | req.body.state.l,
         id: req.body.id,
-        value: req.query.operand,
+        value: req.query.operand1,
       },
     }).then(() => {
       req.body.state.cycles += 10;
