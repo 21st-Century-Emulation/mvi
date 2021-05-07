@@ -1,5 +1,6 @@
 import express, { json } from 'express';
-import axios from 'axios';
+import got from 'got';
+import CacheableLookup from 'cacheable-lookup';
 
 const app = express();
 const port = 8080;
@@ -11,7 +12,7 @@ app.get('/status', (req, res) => {
   res.send("Healthy");
 });
 
-app.post('/api/v1/execute', (req, res) => {
+app.post('/api/v1/execute', async (req, res) => {
   if (req.body.opcode === undefined) {
     console.log(`Invalid request body ${JSON.stringify(req.body)}`);
     res.sendStatus(400);
@@ -25,17 +26,15 @@ app.post('/api/v1/execute', (req, res) => {
   }
 
   if (req.body.opcode === 0x36) { // MVI (HL), d8
-    axios.post(WRITE_MEMORY_API, {}, {
-      params: {
-        // eslint-disable-next-line no-bitwise
-        address: (req.body.state.h << 8) | req.body.state.l,
-        id: req.body.id,
-        value: req.query.operand1,
-      },
-    }).then(() => {
-      req.body.state.cycles += 10;
-      res.send(req.body);
-    });
+    await got.post(WRITE_MEMORY_API, {json: {}, searchParams: {
+      // eslint-disable-next-line no-bitwise
+      address: (req.body.state.h << 8) | req.body.state.l,
+      id: req.body.id,
+      value: req.query.operand1
+    }});
+    
+    req.body.state.cycles += 10;
+    res.send(req.body);
   } else {
     switch (req.body.opcode) {
       case 0x06: // MVI B, d8

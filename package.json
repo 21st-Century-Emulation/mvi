@@ -2,6 +2,10 @@
   "name": "moe-8080-mvi",
   "version": "1.0.0",
   "description": "An implementation of the MVI opcode as a express/node.js microservice",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/21st-century-emulation/mvi"
+  },
   "main": "app.js",
   "type": "module",
   "scripts": {
@@ -16,8 +20,8 @@
   "author": "David Tyler",
   "license": "MIT",
   "dependencies": {
-    "axios": "0.21.1",
-    "express": "4.17.1"
+    "express": "4.17.1",
+    "got": "^11.8.2"
   },
   "devDependencies": {
     "eslint": "^7.23.0",
